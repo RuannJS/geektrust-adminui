@@ -1,4 +1,4 @@
-# Admin User Interface for User Management
+# Geektrust - Admin UI
 
 This project is a front-end interface for admins to manage users. It allows you to view, filter, edit, delete, and select users from a list retrieved via an API. The project also includes pagination and user selection capabilities.
 
