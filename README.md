@@ -2,7 +2,7 @@
 
 This project is a front-end interface for admins to manage users. It allows you to view, filter, edit, delete, and select users from a list retrieved via an API. The project also includes pagination and user selection capabilities.
 
-![UI Preview]()
+![UI Preview](https://i.imgur.com/VlYvsqI.png)
 
 ## Requirements
 
@@ -52,3 +52,16 @@ Sample Response:
   }
 ]
 ```
+## Technologies Used
+<ul>
+  <li>Angular</li>
+  <li>Angular Material</li>
+  <li>TailwindCSS</li>
+  <li>Axios</li>
+</ul>
+
+## Acknowledgments
+
+Special thanks to Geektrust for providing the challenge and API.
+
+
