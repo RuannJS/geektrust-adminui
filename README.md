@@ -54,6 +54,7 @@ Sample Response:
 ```
 ## Technologies Used
 <ul>
+  <li>HTML</li>
   <li>Angular</li>
   <li>Angular Material</li>
   <li>TailwindCSS</li>
