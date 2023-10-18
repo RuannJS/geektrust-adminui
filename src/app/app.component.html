@@ -1,0 +1,169 @@
+<main class="">
+  <!-- PAGE HEADER -->
+  <header class="text-center p-5">
+    <mat-icon color="accent" fontIcon="admin_panel_settings"></mat-icon>
+    <h1 class="text-4xl text-pink-900">Administrator Dashboard</h1>
+    <hr class="border-2 border-pink-200" />
+  </header>
+
+  <!-- TABLE FILTER -->
+  <div class="p-5 flex flex-row gap-60">
+    <input
+      class="placeholder:text-pink-900 border border-pink-700 rounded-full p-2 outline outline-pink-300"
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Filter"
+    />
+  </div>
+
+  <!-- USER TABLE -->
+  <table mat-table [dataSource]="dataSource">
+    <!-- Check Column -->
+    <ng-container matColumnDef="checkbox">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          [checked]="mainChecked"
+          #checkbox
+          (change)="selectAll(checkbox)"
+        >
+          <p class="text-sm text-slate-600">Check All</p>
+        </mat-checkbox>
+      </th>
+
+      <td mat-cell *matCellDef="let user">
+        <mat-checkbox
+          #uniqueCheckbox
+          (change)="toggleSelectedUser(uniqueCheckbox, user.id)"
+          [checked]="allChecked && selectedUsers.includes(user.id)"
+        >
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th class="text-xl text-pink-700" mat-header-cell *matHeaderCellDef>
+        Name
+      </th>
+      <td class="text-pink-900" mat-cell *matCellDef="let user">
+        <p
+          [ngClass]="{
+            'bg-slate-200 p-3 rounded-lg max-w-max': selectedUsers.includes(
+              user.id
+            )
+          }"
+        >
+          {{ user.name }}
+        </p>
+      </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th class="text-xl text-pink-700" mat-header-cell *matHeaderCellDef>
+        Email
+      </th>
+      <td class="text-normal text-pink-900" mat-cell *matCellDef="let user">
+        <p
+          [ngClass]="{
+            'bg-slate-200 p-3 rounded-lg max-w-max': selectedUsers.includes(
+              user.id
+            )
+          }"
+        >
+          {{ user.email }}
+        </p>
+      </td>
+    </ng-container>
+
+    <!-- Role Column -->
+    <ng-container matColumnDef="role">
+      <th class="text-xl text-pink-700" mat-header-cell *matHeaderCellDef>
+        Role
+      </th>
+      <td mat-cell *matCellDef="let user">
+        <span class="text-normal text-blue-700" *ngIf="user.role === 'admin'">
+          <p
+            [ngClass]="{
+              'bg-slate-200 p-3 rounded-lg max-w-max': selectedUsers.includes(
+                user.id
+              )
+            }"
+          >
+            {{ user.role }}
+          </p>
+        </span>
+        <span class="text-normal text-pink-900" *ngIf="user.role === 'member'">
+          <p
+            [ngClass]="{
+              'bg-slate-200 p-3 rounded-lg max-w-max': selectedUsers.includes(
+                user.id
+              )
+            }"
+          >
+            {{ user.role }}
+          </p>
+        </span>
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th class="text-xl text-pink-700" mat-header-cell *matHeaderCellDef>
+        Actions
+      </th>
+      <td mat-cell *matCellDef="let user">
+        <div class="flex flex-row gap-2">
+          <mat-icon
+            class="cursor-pointer"
+            color="warn"
+            fontIcon="delete"
+            (click)="removeUser(user.id)"
+          ></mat-icon>
+          <mat-icon
+            class="cursor-pointer"
+            color="primary"
+            fontIcon="edit"
+            (click)="updateUserDialog(user.id)"
+          ></mat-icon>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <!-- REMOVE ALL SELECTED BUTTON -->
+  <div class="flex flex-row justify-between p-5">
+    <button
+      class="text-black text-opacity-40 text-base bg-red-500 bg-opacity-20 rounded-full p-3 cursor-not-allowed"
+      *ngIf="selectedUsers.length === 0"
+      disabled
+    >
+      <div class="flex flex-row gap-2">
+        <mat-icon fontIcon="group_remove"></mat-icon>
+        <span> Remove Selected</span>
+      </div>
+    </button>
+    <button
+      (click)="removeSelectedUsers()"
+      class="text-black text-base bg-red-500 rounded-full p-3 cursor-pointer"
+      *ngIf="selectedUsers.length > 0"
+    >
+      <div class="flex flex-row gap-2">
+        <mat-icon fontIcon="group_remove"></mat-icon>
+        <span> Remove Selected</span>
+      </div>
+    </button>
+
+    <!-- PAGINATOR -->
+
+    <mat-paginator
+      (click)="mainChecked = false"
+      #paginator
+      showFirstLastButtons
+      [pageSizeOptions]="[10]"
+    ></mat-paginator>
+  </div>
+</main>

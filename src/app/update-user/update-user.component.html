@@ -1,0 +1,42 @@
+<!-- UPDATE USER DIALOG/MODAL -->
+
+<p mat-dialog-title>Update user information</p>
+
+<div class="mb-3" mat-dialog-content>
+  <div class="mb-2">
+    <p class="italic mb-1 text-black font-semibold">Name:</p>
+    <input
+      class="outline outline-blue-400 py-1 px-3 rounded-lg"
+      matInput
+      [(ngModel)]="userInfo.name"
+    />
+  </div>
+  <div class="mb-2">
+    <p class="italic mb-1 text-black font-semibold">Email:</p>
+    <input
+      class="outline outline-blue-400 py-1 px-3 rounded-lg"
+      matInput
+      [(ngModel)]="userInfo.email"
+    />
+  </div>
+  <div class="mb-3">
+    <p class="italic mb-1 text-black font-semibold">Role:</p>
+    <select
+      class="outline outline-blue-400 py-1 px-3 rounded-lg"
+      matNativeControl
+      required
+      [(ngModel)]="userInfo.role"
+    >
+      <option value="admin">admin</option>
+      <option value="member">member</option>
+    </select>
+  </div>
+  <div class="text-end">
+    <button
+      (click)="onSaveClick()"
+      class="bg-red-500 text-white px-3 py-1 rounded-full"
+    >
+      Save
+    </button>
+  </div>
+</div>
