@@ -18,7 +18,9 @@ This project is a front-end interface for admins to manage users. It allows you 
 To use this interface, follow these steps:
 
 1. Clone the repository to your local machine.
-2. Open the `index.html` file in a web browser.
+2. Navigate to the project directory.
+3. Install the project dependencies using npm install
+5. Start the development server with ng serve
 
 ## API
 
