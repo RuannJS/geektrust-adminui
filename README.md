@@ -4,6 +4,11 @@ This project is a front-end interface for admins to manage users. It allows you 
 
 ![UI Preview](https://i.imgur.com/VlYvsqI.png)
 
+## Deployment
+
+This project is deployed and accessible online. You can view it [here](https://geektrust-adminui-weld.vercel.app/).
+
+
 ## Requirements
 
 1. **Column Titles:** The column titles stand out from the user entries.
